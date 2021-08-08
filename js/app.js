@@ -57,14 +57,14 @@ sec.addEventListener('click', changeImg);
 function changeImg (e){
   let t = e.target.id;
 
-
-  for(let i=0;i<obj_arr.length;i++){
-    if (e.target.src.split('/')[4] === obj_arr[i].imgSrc){
-      obj_arr[i].n_click++;
-      console.log(obj_arr[i]);
-    }
-  }
   if ((t==='left' || t==='right' || t==='mid')&& counter<NumRounds){
+    for(let i=0;i<obj_arr.length;i++){
+      if (e.target.src.split('/')[4] === obj_arr[i].imgSrc){
+        obj_arr[i].n_click++;
+        console.log(obj_arr[i]);
+      }
+    }
+
     render();
     counter++;
 
