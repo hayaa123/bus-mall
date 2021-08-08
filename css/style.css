@@ -1,0 +1,41 @@
+
+body{
+    background-color: rgb(150, 200, 206);
+}
+#imag {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: auto;
+    grid-gap: 10px;
+    /* border: 2px solid rebeccapurple; */
+    margin-top: 10px;
+}
+img{
+    height:300px;
+    width:300px;
+    object-fit: cover;
+}
+header {
+    display: flex;
+    height:100px ;
+    background-color:rgb(97, 233, 176);
+    align-items: center;
+    justify-content: space-between;
+}
+
+header nav{
+    padding: 20px;
+}
+
+button{
+    background-color: rgb(97, 233, 176);
+    height: 100px;
+    width: 100px;
+    
+}
+#result{
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+    justify-content: center;
+}
