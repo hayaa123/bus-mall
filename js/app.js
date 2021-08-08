@@ -81,7 +81,9 @@ function list_result (Name,n_click,shown){
   list.appendChild(li);
 }
 
-button.addEventListener('click',function()){
+button.addEventListener('click',click_event);
+
+function click_event(){
   for (let i=0;i<obj_arr.length;i++){
     list_result (obj_arr[i].name,obj_arr[i].n_click,obj_arr[i].shown);
   }
