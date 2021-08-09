@@ -12,6 +12,9 @@ let imgL = document.getElementById('left');
 let imgM = document.getElementById('mid');
 let list = document.getElementById('list1');
 let button =document.querySelector('button');
+let left_random = 0;
+let right_random = 0;
+let mid_random = 0;
 
 function img_object (imgName ,imgSrc){
   this.name = imgName;
@@ -29,9 +32,9 @@ for(let i=0;i<img_array.length;i++){
 }
 console.log(obj_arr);
 function render(){
-  let left_random =  random(0,obj_arr.length-1);
-  let right_random = random(0,obj_arr.length-1);
-  let mid_random =  random(0,obj_arr.length-1);
+  left_random = random(0,obj_arr.length-1);
+  right_random = random(0,obj_arr.length-1);
+  mid_random = random(0,obj_arr.length-1);
 
 
   imgR.src = 'img/'+obj_arr[right_random].imgSrc;
@@ -58,12 +61,17 @@ function changeImg (e){
   let t = e.target.id;
 
   if ((t==='left' || t==='right' || t==='mid')&& counter<NumRounds){
-    for(let i=0;i<obj_arr.length;i++){
-      if (e.target.src.split('/')[4] === obj_arr[i].imgSrc){
-        obj_arr[i].n_click++;
-        console.log(obj_arr[i]);
-      }
+
+    if (t === 'left'){
+      obj_arr[left_random].n_click++;
     }
+    else if(t==='right'){
+      obj_arr[right_random].n_click++;
+    }
+    else if (t==='mid'){
+      obj_arr[mid_random].n_click++;
+    }
+
 
     render();
     counter++;
