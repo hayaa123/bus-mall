@@ -24,6 +24,10 @@ function img_object (imgName ,imgSrc){
   this.n_click =0;
 }
 
+function random (min , max){
+  return Math.floor( Math.random() * ( max - min + 1 ) + min) ;
+}
+
 
 
 for(let i=0;i<img_array.length;i++){
@@ -49,9 +53,6 @@ function render(){
 render();
 
 
-function random (min , max){
-  return Math.floor( Math.random() * ( max - min + 1 ) + min) ;
-}
 
 
 let sec = document.querySelector('section');
@@ -77,7 +78,7 @@ function changeImg (e){
     counter++;
 
   }
-  else{
+  else if(counter>=NumRounds){
     sec.removeEventListener('click', changeImg);
   }
 }
