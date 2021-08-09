@@ -1,6 +1,6 @@
 
 body{
-    background-color: rgb(150, 200, 206);
+    background-color: #63BFF0;
 }
 #imag {
     display:grid;
@@ -18,7 +18,7 @@ img{
 header {
     display: flex;
     height:100px ;
-    background-color:rgb(97, 233, 176);
+    background-color:#06E5DC;
     align-items: center;
     justify-content: space-between;
 }
@@ -28,7 +28,7 @@ header nav{
 }
 
 button{
-    background-color: rgb(97, 233, 176);
+    background-color: #B0F88F;
     height: 100px;
     width: 100px;
     

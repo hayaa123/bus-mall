@@ -15,6 +15,9 @@ let button =document.querySelector('button');
 let left_random = 0;
 let right_random = 0;
 let mid_random = 0;
+let repeat_arr = [];
+let char_labels = [];
+let char_data =[];
 
 function img_object (imgName ,imgSrc){
   this.name = imgName;
@@ -36,10 +39,22 @@ for(let i=0;i<img_array.length;i++){
 }
 console.log(obj_arr);
 function render(){
-  left_random = random(0,obj_arr.length-1);
-  right_random = random(0,obj_arr.length-1);
-  mid_random = random(0,obj_arr.length-1);
 
+  do{
+    left_random = random(0,obj_arr.length-1);
+  }while((left_random===right_random || left_random===mid_random ) || repeat_arr.includes(left_random));
+  do{
+    right_random = random(0,obj_arr.length-1);
+  }while ((left_random===right_random || right_random===mid_random ) || repeat_arr.includes(right_random) );
+
+  do{
+    mid_random = random(0,obj_arr.length-1);
+  }while ((left_random===mid_random || right_random===mid_random) || repeat_arr.includes(mid_random));
+
+
+  repeat_arr=[];
+  repeat_arr.push(left_random,mid_random,right_random);
+  console.log(repeat_arr);
 
   imgR.src = 'img/'+obj_arr[right_random].imgSrc;
   imgM.src = 'img/'+obj_arr[mid_random].imgSrc;
@@ -48,12 +63,10 @@ function render(){
   obj_arr[right_random].shown++;
   obj_arr[mid_random].shown++;
   obj_arr[left_random].shown++;
+
 }
 
 render();
-
-
-
 
 let sec = document.querySelector('section');
 sec.addEventListener('click', changeImg);
@@ -96,4 +109,52 @@ function click_event(){
   for (let i=0;i<obj_arr.length;i++){
     list_result (obj_arr[i].name,obj_arr[i].n_click,obj_arr[i].shown);
   }
+  for (let i=0;i<obj_arr.length;i++){
+    char_labels.push(obj_arr[i].name);
+    char_data.push(obj_arr[i].n_click);
+  }
+  bar_chart();
+}
+
+
+// bar_chart();
+
+function bar_chart(){
+  let ctx = document.getElementById('myChart').getContext('2d');
+  let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: char_labels,
+      datasets: [{
+        label: '# of Votes',
+        data: char_data,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
 }
