@@ -1,19 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&display=swap');
 
 body{
-    background-color: #63BFF0;
+    background-color: #fff;
+    width :1300px;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
 }
 #imag {
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin: auto;
-    grid-gap: 10px;
+    margin: 50px 50px;
+    grid-gap: 50px;
     /* border: 2px solid rebeccapurple; */
     margin-top: 10px;
+    align-items: center;
+    padding: 20px
 }
 img{
     height:300px;
     width:300px;
     object-fit: cover;
+    padding: 20px;
+    transition: 300ms;
+}
+img:hover{
+    width: 350px;
+    height: 350px;
+    border: 2px solid #06E5DC ;
 }
 header {
     display: flex;
@@ -24,18 +37,69 @@ header {
 }
 
 header nav{
-    padding: 20px;
+    display: grid;
+    justify-content: start;
+    align-items: center;
+    height: 100px;
+    width: 500px;
+    font-size: 20px;
+    /* text-decoration: none; */
+    grid-column-gap: 50px;
+    grid-template-columns: auto auto auto;
+
+}
+header nav a {
+    text-decoration: none;
+    background-color: #67F1B8;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    padding-top: 20px;
+    transition: 400ms;
+}
+header nav a:hover{
+    background-color: #F9F871
 }
 
-button{
-    background-color: #B0F88F;
-    height: 100px;
-    width: 100px;
+header p {
+    font-size: 30px;
+    margin: 30px;
+    text-decoration: underline #F9F871;
     
+    
+}
+main p {
+    font-size: 30px;
+    text-align: center;
+    
+
+}
+button{
+    text-decoration: none;
+    background-color: #67F1B8;
+    height: 75px;
+    width: 150px;
+    text-align: center;
+    border: none;
+    transition: 400ms;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+button:hover{
+    background-color: #F9F871;
 }
 #result{
     display: flex;
     margin: auto;
     margin-top: 10px;
     justify-content: center;
+}
+
+canvas{
+    margin: 50px;
+}
+ul {
+    display: grid;
+    font-size: 20px;
+    grid-template-columns: auto auto auto;
 }
