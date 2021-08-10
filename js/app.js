@@ -19,24 +19,21 @@ let repeat_arr = [];
 let char_labels = [];
 let char_data =[];
 
-function img_object (imgName ,imgSrc){
+function Img_object (imgName ,imgSrc, shown=0 , n_click=0){
   this.name = imgName;
   this.imgSrc = imgSrc;
   obj_arr.push(this);
-  this.shown = 0;
-  this.n_click =0;
+  this.shown = shown;
+  this.n_click = n_click;
 }
 
 function random (min , max){
   return Math.floor( Math.random() * ( max - min + 1 ) + min) ;
 }
 
+get_data();
 
 
-for(let i=0;i<img_array.length;i++){
-  // eslint-disable-next-line new-cap
-  new img_object(img_array[i].split('.')[0],img_array[i]);
-}
 console.log(obj_arr);
 function render(){
 
@@ -89,7 +86,7 @@ function changeImg (e){
 
     render();
     counter++;
-
+    localStorage.data = JSON.stringify(obj_arr);
   }
   else if(counter>=NumRounds){
     sec.removeEventListener('click', changeImg);
@@ -157,4 +154,18 @@ function bar_chart(){
   });
 
 
+}
+
+
+function get_data() {
+  if(localStorage.data){
+    let data = JSON.parse(localStorage.data);
+    for (let i=0;i<data.length;i++){
+      new Img_object (data[i].name,data[i].imgSrc,data[i].shown,data[i].n_click)
+    }
+  }else{
+    for(let i=0;i<img_array.length;i++){
+      new Img_object(img_array[i].split('.')[0],img_array[i]);
+    }
+  }
 }
