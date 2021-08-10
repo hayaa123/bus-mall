@@ -5,6 +5,7 @@ body{
     width :1300px;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
+    margin: auto;
 }
 #imag {
     display:grid;
